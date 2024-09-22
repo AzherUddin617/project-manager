@@ -4,6 +4,7 @@ import dotenv from "dotenv";
 import express from "express";
 import helmet from "helmet";
 import morgan from "morgan";
+import projectRouter from "./routes/projectRoutes";
 
 const PORT = process.env.PORT || 5000;
 
@@ -25,6 +26,8 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.get("/", (req, res) => {
 	res.send("Hello World!");
 });
+
+app.use("/projects", projectRouter);
 
 // LISTEN SERVER
 app.listen(PORT, () => {
